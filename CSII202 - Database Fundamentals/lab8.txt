@@ -1,0 +1,59 @@
+1.Мэргэжил бүрт хэдэн хичээл байгааг тоолж харуулна уу.
+
+SELECT profno,COUNT(profno) AS too
+FROM lessonrelation
+GROUP BY profno;
+
+2.Мэргэжил бүрээр хэдэн оюутан суралцаж байгааг харуулна уу.Оюутны тоогоор өсөхөөр эрэмбэлнэ үү.
+
+SELECT p.pname, COUNT(siNo)
+FROM student s, professional p
+WHERE s.profno=p.profno
+GROUP BY p.profno
+ORDER BY COUNT(siNo) ASC;
+
+3.Хамгийн олон оюутан сонгосон хичээлийн мэдээллийг харуулна уу.
+SELECT *
+FROM lesson
+WHERE lessonno=(SELECT COUNT(lessonno) AS lessonno
+		FROM chosenlesson
+		GROUP BY lessonno);
+4.Бат гэсэн нэртэй оюутны сонгон суралцах боломжтой хичээлийн жагсаалтыг харуулна уу.
+
+SELECT l.lessonno, l.lessonname
+FROM lesson l, lessonrelation r, student s
+WHERE s.fname='Bat' AND s.profno=r.profno AND r.lessonno=l.lessonno;
+
+5.Батын 2021 оны хаврын улиралд судалсан хичээлийн дундаж дүнг гаргана уу.
+SELECT siNo,AVG(O1+O2) AS dundajdun
+FROM chosenlesson  
+WHERE chosendate LIKE '2021-%-%' AND season="Havar" AND siNo = (SELECT siNo
+                                    FROM student
+                                    WHERE fname="Bat");
+6.Оюутан бүрийн сонгосон хичээлийн тоо, дундаж дүнг харуулна уу.
+SELECT siNo,COUNT(lessonno) AS hicheelintoo,AVG(O1+O2) AS dundajdun
+FROM chosenlesson
+GROUP BY siNo;
+7.2021 оны хичээлийн жилийн намрын улирлын хувьд мэргэжил тус бүрээр хамгийн өндөр дүн, хамгийн бага дүн, дундаж дүнг тооцож гаргана уу.
+
+SELECT s.profno, MAX(O1+O2), MIN(O1+O2), AVG(O1+O2)
+FROM chosenlesson c, student s
+WHERE chosendate LIKE '2021-%-%' AND season="namar";
+
+8.2020 оны намрын улирлын хичээл дээр муу дүн авсан оюутны  жагсаалтыг шүүж гаргана уу.
+
+SELECT siNo
+FROM chosenlesson
+WHERE 60>O1+O2 AND chosendate LIKE '2020-%-%' AND  season="Namar";
+
+9.Хамгийн өндөр дүнтэй оюутны 2021 оны намар сонгосон хичээлийн жагсаалтыг шүүж гаргана уу.
+
+SELECT sino, lessonno
+FROM chosenlesson
+WHERE chosendate LIKE '2021-%-%' AND O1+O2 = (SELECT MAX(O1+O2)
+		FROM chosenlesson);
+
+10.2020 оноос өмнө O1, O2 дүн аваагүй оюутны хичээл сонголтыг цуцална уу.
+
+DELETE FROM chosenlesson
+WHERE chosendate < '2020-%-%' AND O1=0 OR O2=0;

@@ -1,0 +1,145 @@
+CREATE DATABASE lhab_9
+
+CREATE TABLE Hotel(
+	           hotelNo VARCHAR(20),
+	           hotelName VARCHAR(20),
+	           city VARCHAR(20),
+	           PRIMARY KEY (hotelNo));
+
+INSERT INTO Hotel(hotelNo,hotelName,city)
+VALUES  ("H001","Amure","Ulaanbaatar"),
+	("H002","Ramada","Erdenet"),
+	("H003","Bayngol","Osaka"),
+	("H004","ShangriLa","Bern"),
+	("H005","Ulaanbaatar","Kyoto");
+
+CREATE TABLE Room(
+		  roomNo INT,
+		  hotelNo VARCHAR(20),
+		  bed INT,
+		  price INT,
+		  PRIMARY KEY(roomNo),
+		  FOREIGN KEY (hotelNo) REFERENCES Hotel(hotelNo));
+		  
+INSERT INTO Room(roomNo, hotelNo, bed, price)
+VALUE (001,"H001", 2,150),
+	(004,"H001", 2,50),
+	(002,"H001", 2,370),
+	(003,"H001", 2,250),
+	(025,"H002", 1,50),
+	(027,"H002", 1,600),
+	(028,"H002", 1,750),
+	(101,"H003", 3,230),
+	(102,"H003", 3,260),
+	(103,"H003", 3,180),
+	(247,"H004", 4,2000),
+	(248,"H004", 4,530),
+	(249,"H004", 4,1000),
+	(666,"H005", 1,190),
+	(667,"H005", 1,300),
+	(668,"H005", 1,5000);
+
+CREATE TABLE Booking(
+		     hotelNo VARCHAR(20),
+		     roomNo INT,
+		     guestNo VARCHAR(20),
+		     dateFrom DATE,
+		     dateTo DATE,
+		     FOREIGN KEY(hotelNo) REFERENCES Hotel(hotelNo),
+		     FOREIGN KEY(roomNo) REFERENCES Room(roomNo),
+		     FOREIGN KEY(guestNo) REFERENCES Guest(guestNo));
+		     
+INSERT INTO Booking(hotelNo, roomNo, guestNo, dateFrom, dateTo)
+VALUES ("H001",004,"G1","2022-03-21","2022-03-25"),
+	("H002",027,"G2","2022-09-21","2022-11-20"),
+	("H003",102,"G3","2021-05-21","2021-07-25"),
+	("H004",248,"G4","2021-02-05","2021-02-14"),
+	("H004",248,"G4","2022-02-15","2023-02-21"),
+	("H005",666,"G5","2022-07-11","2022-09-11"),
+	("H001",002,"G6","2021-04-01","2022-09-15"),
+	("H001",003,"G7","2022-01-21","2022-02-25"),
+	("H002",028,"G8","2020-03-21","2022-03-26"),
+	("H002",027,"G9","2019-04-21","2020-01-01"),
+	("H004",247,"G4","2019-12-01","2020-12-25"),
+	("H005",667,"G10","2015-05-20","2015-07-01"),
+	("H004",248,"G10","2018-01-21","2018-02-14"),
+	("H003",103,"G1","2022-04-01","2022-09-25"),
+	("H003",102,"G10","2021-02-21","2021-03-18");
+	
+
+
+CREATE TABLE Guest(
+		   guestNo VARCHAR(20) PRIMARY KEY,
+		   guestName VARCHAR(20),
+		   guestAddress VARCHAR(20),
+		   phonenumber VARCHAR(20));
+		   
+INSERT INTO Guest(guestNo, guestName, guestAddress, phonenumber)
+VALUES ("G1","Baldan","G0321","9999-9778"),
+	("G2","Perenlee","G1321","8888-9778"),
+	("G3","Choinhor","G2324","9911-9911"),
+	("G4","Sengee","G3312","9998-9778"),
+	("G5","Dorj","G4521","4799-8878"),
+	("G6","Mark","G8721","9999-9999"),
+	("G7","Terbish","G0891","9559-9778"),
+	("G8","Enebish","G0761","9899-1248"),
+	("G9","Burbish","G9651","6198-7558"),
+	("G10","Basbish","G2471","9129-9713");
+	
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~lab 9~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	
+1.Зочид буудлуудын өрөөний дэлгэрэнгүй мэдээллийг гарга. Үүнд хотын нэр, буудлын нэр, өрөөний дугаар болон үнийн мэдээллийг гаргаж үнээр нь эрэмбэлнэ үү.
+SELECT h.city, h.hotelName, r.roomNo, r.price
+FROM room r, hotel h
+WHERE h.hotelNo=r.hotelNo
+ORDER BY r.price;
+2.100-с 300-н үнэтэй өрөөнүүдийг буудлын мэдээллийн хамтаар харуулна уу.
+SELECT r.roomno, h.*
+FROM room r, hotel h
+WHERE r.hotelno=h.hotelno AND price BETWEEN 100 AND 300;
+3.Хамгийн олон өрөөтэй зочид буудлын мэдээллийг гаргана уу. 
+SELECT *
+FROM hotel
+WHERE hotelno=(SELECT hotelno
+	       FROM room
+	       GROUP BY hotelno
+	       ORDER BY COUNT(hotelno)DESC
+	       LIMIT 1); 
+4.Зочид буудал тус бүр хэдэн өрөөтэй болон өрөөнүүдийн хамгийн хямд, их,
+дундаж үнийн мэдээллийг харуулна уу.
+SELECT hotelno,MIN(price) AS baga,MAX(price) AS ih, AVG(price) AS dundaj
+FROM room
+GROUP BY hotelno;
+5.Mark гэсэн нэртэй хүний буудалсан буудлын мэдээлэл, өрөөний мэдээллийг шүүж гаргана уу.	
+SELECT h.*,r.*
+FROM hotel h,room r, guest g, booking b
+WHERE h.hotelno=b.hotelno AND r.roomno=b.roomno AND g.guestno=b.guestno AND guestname="Mark";
+6.Өнөөдрийн байдлаар зочинтой байгаа өрөөний дугаар, орны тоо, үнэ, зочны нэр, утасны дугаар болон тухайн өрөө аль хотод байрладаг ямар 
+нэртэй буудлын өрөө болохыг харуулна уу. NOW() функцийг ашиглана уу.
+SELECT r.roomno,r.bed,r.price, g.guestname,g.phonenumber,h.city,h.hotelname
+FROM room r, guest g, hotel h, booking b
+WHERE NOW() BETWEEN datefrom AND dateto AND h.hotelno=r.hotelno AND g.guestno=b.guestno AND r.roomno=b.roomno;
+7.Зочинтой өрөөний захиалга дуусах хугацааг хоногоор харуулна уу. DATEDIFF() функцийг ашиглана уу.
+SELECT datefrom,dateto,DATEDIFF(dateto,datefrom) AS uldsenhonog
+FROM booking
+WHERE NOW() BETWEEN datefrom AND dateto;
+8.Хамгийн их зочинтой зочид буудлын өрөөний мэдээллийг харуулна уу.
+SELECT *
+FROM room
+WHERE hotelno=(SELECT hotelno
+		FROM booking
+		GROUP BY hotelno
+		ORDER BY COUNT(hotelno) DESC
+		LIMIT 1);
+9.300-с бага үнэтэй өрөө шууд захиалах боломжтой буудлуудын мэдээллийг гаргана уу.
+SELECT h.*,r.roomno
+FROM hotel h, room r, booking b
+WHERE h.hotelno=r.hotelno AND b.dateto<NOW() AND r.price<300
+GROUP BY r.roomno;
+10.Хамгийн удаан хугацаагаар буудалсан зочны дугаар, нэр, буудлын дугаар, буудал байрлах хот, өрөөний дугаар, үнийн мэдээллийг гаргана уу.
+SELECT g.guestno,g.guestname,b.hotelno,h.city,r.roomno,r.price,DATEDIFF(b.dateto,b.datefrom) AS udur
+FROM guest g, hotel h, room r,booking b
+WHERE b.guestno=g.guestno AND h.hotelno=b.hotelno AND r.roomno=b.roomno AND r.hotelno=h.hotelno AND b.hotelno=h.hotelno
+GROUP BY udur 
+ORDER BY udur DESC 
+LIMIT 1; 

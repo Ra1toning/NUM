@@ -1,0 +1,228 @@
+CREATE TABLE Branch(
+	branchNo VARCHAR(20),
+	street VARCHAR(25),
+	city VARCHAR(20),
+	postcode VARCHAR(20)
+);
+INSERT INTO Branch(branchNo, street, city, postcode)
+VALUES("B005","22 Deer Rd","London","SW1 4EH"),
+      ("B007","16 Argyll ST","Aberdeen","AB2 3SU"),
+      ("B003","163 Main St","Glasgow","G11 9QX"),
+      ("B004","32 Manse Rd","Bristol","BS99 1NZ"),
+      ("B002","56 Clover Dr","London","NW10 6EU");
+      
+          CREATE TABLE Staff(
+		staffNo VARCHAR(5),
+		FName VARCHAR(15),
+		LName VARCHAR(15),
+		position1 VARCHAR(15),
+		sex VARCHAR(2),
+		DOB DATE, 
+		salary INT,
+		branchNo VARCHAR(5) );
+INSERT INTO Staff(staffNo, fName, LName, position1, sex, DOB, salary, branchNo)
+VALUES("SL21","John","White","Manager","M","1945-10-1",30000,"B005"),
+	("SG37","Ann","Beech","Assistant","F","1960-11-10",12000,"B003"),
+	("SG14","David","Ford","Supervisor","M","1958-03-24",18000,"B003"),
+	("SA9","Mary","Howe","Assistant","F","1970-02-19",9000,"B007"),
+	("SG5","Susan","Brand","Manager","F","1940-06-03",24000,"B003"),
+	("SL41","Julia","Lee","Assistant","F","1965-06-13",9000,"B005");
+	
+	
+CREATE TABLE PropertyForRent(
+	propertyNo VARCHAR(20),
+	street VARCHAR(25),
+	city VARCHAR(25),
+	postcode VARCHAR(25),
+	type1 VARCHAR(25),
+	rooms INT,
+	rent INT,
+	ownerNo VARCHAR(25),
+	staffNo VARCHAR(25),
+	branchNo VARCHAR(25)
+	);
+	
+INSERT INTO PropertyForRent(propertyNo, street, city, postcode, type1, rooms, rent, ownerNo, staffNo, branchNo)
+VALUES ("PA14","16 Holhead","Aberdeen","AB7 5SU","HOUSE",6,650,"CO46","SA9","B007"),
+	("PL94","6 Argyll St","London","NW2","Flat",4,400,"CO87","SL41","B005"),
+	("PG4","6 Lawrence St","Glasgow","G11 9QX","Flat",3,350,"CO40"," ","B003"),
+	("PG36","2 Manor Rd","Glasgow","G32 4QX","Flat",3,375,"CO87","SG37","B003"),
+	("PG21","18 Dale Rd","Glasgow","G12","House",5,600,"CO87","SG37","B003"),
+	("PG16","5 Novar Dr","Glasgow","G12 9 AX","Flat",4,450,"CO93","SG14","B003");
+
+CREATE TABLE Client1(
+	ClientNo VARCHAR(25),
+	fName VARCHAR(25),
+	IName VARCHAR(25),
+	telNo VARCHAR(25),
+	prefType VARCHAR(25),
+	maxRent INT
+	);
+	
+INSERT INTO Client1(ClientNo, fName, IName, telNo, prefType, maxRent)
+VALUES ("C76","John","Kay","0207-774-5632","Flat",425),
+	("CR76","Aline","Stewart","0141-848-1825","Flat",350),
+	("CR74","Mike","Ritchie","01475-392178","House",750),
+	("CR62","Mary","Tregear","01224-196720","Flat",600);
+	
+CREATE TABLE PrivateOwner(
+	ownerNo VARCHAR(25),
+	fName VARCHAR(25),
+	IName VARCHAR(25),
+	address VARCHAR(25),
+	telNo VARCHAR(25)
+	);
+	
+INSERT INTO PrivateOwner (ownerNo , fName, IName, address, telNo)
+VALUES	("CO46","Joe","Keogh","2 Fergus Dr,Aberdeen AB2 7SX","01224-861212"),
+	("CO87","Carol","Farrel","6 Achray St, Glasgow G32 9DX","0141-357-7419"),
+	("CO40","Tina","Murphy","63 Well St, Glasgow G42","0141-943-1728"),
+	("CO93","Tony","Shaw","12 Park Pl, Glasgow G4 0QR","0141-225-7025");
+
+CREATE TABLE Viewing(
+	clientNo VARCHAR(25),
+	propertyNo VARCHAR(25),
+	viewDate DATE,
+	comments VARCHAR(25)
+	);
+	
+INSERT INTO Viewing( clientNo, propertyNo, viewDate, comments)
+VALUES	("CR56","PA14","2004-05-24","too small"),
+	("CR76","PG4","2004-04-04","too remote"),
+	("CR56","PG4","2004-05-26"," "),
+	("CR62","PA14","2004-05-14","no dining room"),
+	("CR56","PG36","2004-04-28"," ");
+	
+CREATE TABLE Registration(
+	clientNo VARCHAR(25),
+	branchNo VARCHAR(25),
+	staffNo VARCHAR(25),
+	dateJoined DATE
+	);
+	
+INSERT INTO Registration( clientNo, branchNo, staffNo, dateJoined)
+VALUES ("CR76","B005","SL41","2004-01-02"),
+	("CR56","B003","SG37","2003-04-11"),
+	("CR74","B003","SG37","2002-11-16"),
+	("CR62","B007","SA9","2003-03-07");
+	
+	
+	
+1.	
+	
+SELECT *
+FROM staff
+WHERE POSITION1="Manager" OR POSITION1="Supervisor";
+
+2.
+
+SELECT *
+FROM staff
+WHERE sex="F";
+
+3.
+
+SELECT *
+FROM propertyforrent
+WHERE rooms>=3 AND rooms<=5;
+
+4.
+
+SELECT *
+FROM propertyforrent
+WHERE rent>400 OR city="London";
+
+5.
+
+SELECT city, ownerNo, rent
+FROM propertyforrent
+WHERE staffNo!=" ";
+
+6.
+
+SELECT *
+FROM staff
+WHERE salary>20000 AND sex='M';
+
+7.
+
+SELECT *
+FROM propertyforrent
+WHERE rent BETWEEN 300 AND 500 AND city="Glasgow";
+
+8.
+
+SELECT *
+FROM propertyforrent
+WHERE city="Aberdeen" OR type1="HOUSE";
+
+9.
+
+SELECT *
+FROM staff
+WHERE DOB<"1970-01-01" AND POSITION1="Assistant";
+
+10.
+
+SELECT *
+FROM viewing
+WHERE viewDate BETWEEN "2004-05-1" AND "2004-05-31";
+
+11.
+
+SELECT *
+FROM staff
+WHERE branchNo="B007" OR position1="Manager";
+
+12.
+
+SELECT branchNo, postcode
+FROM branch
+WHERE city="Bristol";
+
+13.
+
+SELECT clientNo, staffNo
+FROM registration;
+
+14.
+
+SELECT staffNo, propertyNo, rent, ownerNo
+FROM propertyforrent
+WHERE rooms=3;
+
+15.
+
+SELECT *
+FROM staff
+WHERE salary BETWEEN 10000 AND 20000 AND sex='M';
+
+16.
+SELECT clientNo, viewDate
+FROM viewing
+WHERE comments="no dining room";
+
+17.
+
+SELECT clientNo, branchNo, dateJoined
+FROM registration 
+WHERE staffNo="SG37";
+
+18.
+
+SELECT staffNo, FName, LName, position1, salary, salary/2
+						AS  HagasSalary
+FROM staff;
+
+19.
+
+SELECT propertyNo, ownerNo, rent, rent*0.95
+					AS shineune
+FROM propertyforrent
+WHERE rooms=4 AND type1="Flat";
+
+20.
+
+SELECT propertyNo, city, staffNo
+FROM propertyforrent
+WHERE type1="Flat" AND rooms=3;

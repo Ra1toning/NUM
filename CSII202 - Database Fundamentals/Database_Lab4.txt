@@ -1,0 +1,414 @@
+CREATE TABLE Branch(
+	branchNo VARCHAR(20),
+	street VARCHAR(25),
+	city VARCHAR(20),
+	postcode VARCHAR(20)
+);
+INSERT INTO Branch(branchNo, street, city, postcode)
+VALUES("B005","22 Deer Rd","London","SW1 4EH"),
+      ("B007","16 Argyll ST","Aberdeen","AB2 3SU"),
+      ("B003","163 Main St","Glasgow","G11 9QX"),
+      ("B004","32 Manse Rd","Bristol","BS99 1NZ"),
+      ("B002","56 Clover Dr","London","NW10 6EU");
+      
+          CREATE TABLE Staff(
+		staffNo VARCHAR(5),
+		FName VARCHAR(15),
+		LName VARCHAR(15),
+		position1 VARCHAR(15),
+		sex VARCHAR(2),
+		DOB DATE, 
+		salary INT,
+		branchNo VARCHAR(5) );
+INSERT INTO Staff(staffNo, fName, LName, position1, sex, DOB, salary, branchNo)
+VALUES("SL21","John","White","Manager","M","1945-10-1",30000,"B005"),
+	("SG37","Ann","Beech","Assistant","F","1960-11-10",12000,"B003"),
+	("SG14","David","Ford","Supervisor","M","1958-03-24",18000,"B003"),
+	("SA9","Mary","Howe","Assistant","F","1970-02-19",9000,"B007"),
+	("SG5","Susan","Brand","Manager","F","1940-06-03",24000,"B003"),
+	("SL41","Julia","Lee","Assistant","F","1965-06-13",9000,"B005");
+	
+	
+CREATE TABLE PropertyForRent(
+	propertyNo VARCHAR(20),
+	street VARCHAR(25),
+	city VARCHAR(25),
+	postcode VARCHAR(25),
+	type1 VARCHAR(25),
+	rooms INT,
+	rent INT,
+	ownerNo VARCHAR(25),
+	staffNo VARCHAR(25),
+	branchNo VARCHAR(25)
+	);
+	
+INSERT INTO PropertyForRent(propertyNo, street, city, postcode, type1, rooms, rent, ownerNo, staffNo, branchNo)
+VALUES ("PA14","16 Holhead","Aberdeen","AB7 5SU","House",6,650,"CO46","SA9","B007"),
+	("PL94","6 Argyll St","London","NW2","Flat",4,400,"CO87","SL41","B005"),
+	("PG4","6 Lawrence St","Glasgow","G11 9QX","Flat",3,350,"CO40"," ","B003"),
+	("PG36","2 Manor Rd","Glasgow","G32 4QX","Flat",3,375,"CO87","SG37","B003"),
+	("PG21","18 Dale Rd","Glasgow","G12","House",5,600,"CO87","SG37","B003"),
+	("PG16","5 Novar Dr","Glasgow","G12 9 AX","Flat",4,450,"CO93","SG14","B003");
+
+CREATE TABLE Client1(
+	ClientNo VARCHAR(25),
+	fName VARCHAR(25),
+	IName VARCHAR(25),
+	telNo VARCHAR(25),
+	prefType VARCHAR(25),
+	maxRent INT
+	);
+	
+INSERT INTO Client1(ClientNo, fName, IName, telNo, prefType, maxRent)
+VALUES ("C76","John","Kay","0207-774-5632","Flat",425),
+	("CR76","Aline","Stewart","0141-848-1825","Flat",350),
+	("CR74","Mike","Ritchie","01475-392178","House",750),
+	("CR62","Mary","Tregear","01224-196720","Flat",600);
+	
+CREATE TABLE PrivateOwner(
+	ownerNo VARCHAR(25),
+	fName VARCHAR(25),
+	IName VARCHAR(25),
+	address VARCHAR(25),
+	telNo VARCHAR(25)
+	);
+	
+INSERT INTO PrivateOwner (ownerNo , fName, IName, address, telNo)
+VALUES	("CO46","Joe","Keogh","2 Fergus Dr,Aberdeen AB2 7SX","01224-861212"),
+	("CO87","Carol","Farrel","6 Achray St, Glasgow G32 9DX","0141-357-7419"),
+	("CO40","Tina","Murphy","63 Well St, Glasgow G42","0141-943-1728"),
+	("CO93","Tony","Shaw","12 Park Pl, Glasgow G4 0QR","0141-225-7025");
+
+CREATE TABLE Viewing(
+	clientNo VARCHAR(25),
+	propertyNo VARCHAR(25),
+	viewDate DATE,
+	comments VARCHAR(25)
+	);
+	
+INSERT INTO Viewing( clientNo, propertyNo, viewDate, comments)
+VALUES	("CR56","PA14","2004-05-24","too small"),
+	("CR76","PG4","2004-04-04","too remote"),
+	("CR56","PG4","2004-05-26"," "),
+	("CR62","PA14","2004-05-14","no dining room"),
+	("CR56","PG36","2004-04-28"," ");
+	
+CREATE TABLE Registration(
+	clientNo VARCHAR(25),
+	branchNo VARCHAR(25),
+	staffNo VARCHAR(25),
+	dateJoined DATE
+	);
+	
+INSERT INTO Registration( clientNo, branchNo, staffNo, dateJoined)
+VALUES ("CR76","B005","SL41","2004-01-02"),
+	("CR56","B003","SG37","2003-04-11"),
+	("CR74","B003","SG37","2002-11-16"),
+	("CR62","B007","SA9","2003-03-07");
+	
+	
+1. Ажилчдын мэдээллийг салбараар нь ангилж албан тушаал бүр дээр хагас сарын цалин ямар байгааг
+гаргана уу.
+SELECT position1, salary/2 AS hagassar
+FROM staff
+GROUP BY branchNo;
+
+2. Ажилчдын мэдээллийг албан тушаалаар нь ангилж, албан тушаал тус бүр дээр хэдэн эрэгтэй хэдэн
+эмэгтэй ажилчид ажиллаж байгааг гаргана уу. Ажилчдын тоог буурахаар эрэмбэлнэ уу.
+SELECT COUNT(sex) AS huis
+FROM staff
+WHERE SEX IN ('M','F')
+CREATE TABLE Branch(
+	branchNo VARCHAR(20),
+	street VARCHAR(25),
+	city VARCHAR(20),
+	postcode VARCHAR(20)
+);
+INSERT INTO Branch(branchNo, street, city, postcode)
+VALUES("B005","22 Deer Rd","London","SW1 4EH"),
+      ("B007","16 Argyll ST","Aberdeen","AB2 3SU"),
+      ("B003","163 Main St","Glasgow","G11 9QX"),
+      ("B004","32 Manse Rd","Bristol","BS99 1NZ"),
+      ("B002","56 Clover Dr","London","NW10 6EU");
+      
+          CREATE TABLE Staff(
+		staffNo VARCHAR(5),
+		FName VARCHAR(15),
+		LName VARCHAR(15),
+		position1 VARCHAR(15),
+		sex VARCHAR(2),
+		DOB DATE, 
+		salary INT,
+		branchNo VARCHAR(5) );
+INSERT INTO Staff(staffNo, fName, LName, position1, sex, DOB, salary, branchNo)
+VALUES("SL21","John","White","Manager","M","1945-10-1",30000,"B005"),
+	("SG37","Ann","Beech","Assistant","F","1960-11-10",12000,"B003"),
+	("SG14","David","Ford","Supervisor","M","1958-03-24",18000,"B003"),
+	("SA9","Mary","Howe","Assistant","F","1970-02-19",9000,"B007"),
+	("SG5","Susan","Brand","Manager","F","1940-06-03",24000,"B003"),
+	("SL41","Julia","Lee","Assistant","F","1965-06-13",9000,"B005");
+	
+	
+CREATE TABLE PropertyForRent(
+	propertyNo VARCHAR(20),
+	street VARCHAR(25),
+	city VARCHAR(25),
+	postcode VARCHAR(25),
+	type1 VARCHAR(25),
+	rooms INT,
+	rent INT,
+	ownerNo VARCHAR(25),
+	staffNo VARCHAR(25),
+	branchNo VARCHAR(25)
+	);
+	
+INSERT INTO PropertyForRent(propertyNo, street, city, postcode, type1, rooms, rent, ownerNo, staffNo, branchNo)
+VALUES ("PA14","16 Holhead","Aberdeen","AB7 5SU","House",6,650,"CO46","SA9","B007"),
+	("PL94","6 Argyll St","London","NW2","Flat",4,400,"CO87","SL41","B005"),
+	("PG4","6 Lawrence St","Glasgow","G11 9QX","Flat",3,350,"CO40"," ","B003"),
+	("PG36","2 Manor Rd","Glasgow","G32 4QX","Flat",3,375,"CO87","SG37","B003"),
+	("PG21","18 Dale Rd","Glasgow","G12","House",5,600,"CO87","SG37","B003"),
+	("PG16","5 Novar Dr","Glasgow","G12 9 AX","Flat",4,450,"CO93","SG14","B003");
+
+CREATE TABLE Client1(
+	ClientNo VARCHAR(25),
+	fName VARCHAR(25),
+	lName VARCHAR(25),
+	telNo VARCHAR(25),
+	prefType VARCHAR(25),
+	maxRent INT
+	);
+	
+INSERT INTO Client1(ClientNo, fName, lName, telNo, prefType, maxRent)
+VALUES ("C76","John","Kay","0207-774-5632","Flat",425),
+	("CR76","Aline","Stewart","0141-848-1825","Flat",350),
+	("CR74","Mike","Ritchie","01475-392178","House",750),
+	("CR62","Mary","Tregear","01224-196720","Flat",600);
+	
+CREATE TABLE PrivateOwner(
+	ownerNo VARCHAR(25),
+	fName VARCHAR(25),
+	lName VARCHAR(25),
+	address VARCHAR(25),
+	telNo VARCHAR(25)
+	);
+	
+INSERT INTO PrivateOwner (ownerNo , fName, lName, address, telNo)
+VALUES	("CO46","Joe","Keogh","2 Fergus Dr,Aberdeen AB2 7SX","01224-861212"),
+	("CO87","Carol","Farrel","6 Achray St, Glasgow G32 9DX","0141-357-7419"),
+	("CO40","Tina","Murphy","63 Well St, Glasgow G42","0141-943-1728"),
+	("CO93","Tony","Shaw","12 Park Pl, Glasgow G4 0QR","0141-225-7025");
+
+CREATE TABLE Viewing(
+	clientNo VARCHAR(25),
+	propertyNo VARCHAR(25),
+	viewDate DATE,
+	comments VARCHAR(25)
+	);
+	
+INSERT INTO Viewing( clientNo, propertyNo, viewDate, comments)
+VALUES	("CR56","PA14","2004-05-24","too small"),
+	("CR76","PG4","2004-04-04","too remote"),
+	("CR56","PG4","2004-05-26"," "),
+	("CR62","PA14","2004-05-14","no dining room"),
+	("CR56","PG36","2004-04-28"," ");
+	
+CREATE TABLE Registration(
+	clientNo VARCHAR(25),
+	branchNo VARCHAR(25),
+	staffNo VARCHAR(25),
+	dateJoined DATE
+	);
+	
+INSERT INTO Registration( clientNo, branchNo, staffNo, dateJoined)
+VALUES ("CR76","B005","SL41","2004-01-02"),
+	("CR56","B003","SG37","2003-04-11"),
+	("CR74","B003","SG37","2002-11-16"),
+	("CR62","B007","SA9","2003-03-07");
+	
+1. Ажилчдын мэдээллийг салбараар нь ангилж албан тушаал бүр дээр хагас сарын цалин ямар байгааг
+гаргана уу.
+SELECT position1, salary/2 AS hagassar
+FROM staff
+GROUP BY branchNo;
+
+2. Ажилчдын мэдээллийг албан тушаалаар нь ангилж, албан тушаал тус бүр дээр хэдэн эрэгтэй хэдэн
+эмэгтэй ажилчид ажиллаж байгааг гаргана уу. Ажилчдын тоог буурахаар эрэмбэлнэ уу.
+SELECT position1, COUNT(sex) AS huis
+FROM staff
+WHERE SEX IN ('M','F')
+GROUP BY position1
+ORDER BY huis DESC;
+
+3. Нэгээс олон ажилчидтай салбарын ажилчдын тоо болон нийт цалингийн хэмжээг гаргана уу.
+
+SELECT COUNT(branchNo), SUM(salary) 
+FROM staff
+GROUP BY branchNo
+HAVING COUNT(branchNo)>1;
+4. 0141-357-7419 гэсэн утастай үл хөдлөх хөрөнгө эзэмшигчийн түрээсийн үнээс их түрээсийн үнэтэй
+үл хөдлөх хөрөнгийн ownerNo, propertyNo, rent, TYPE, rooms -ийн мэдээллийг гаргана уу.
+SELECT ownerNo, propertyNo, rent, type1, rooms
+FROM propertyforrent
+WHERE rent>(SELECT AVG(rent) AS rent
+             FROM propertyforrent
+             WHERE ownerNo IN (SELECT ownerNo
+                             FROM privateowner
+                             WHERE telNo = '0141-357-7419'));
+5. Үл хөдлөх хөрөнгийг үзээд “ too small” гэж сэтгэгдэл үлдээсэн харилцагчийн үзсэн үл хөдлөх
+хөрөнгө аль хотод байрладаг, хэдэн өрөөтэй, ямар үнэтэй байгааг гаргана уу.
+
+SELECT city, rooms, rent
+FROM propertyforrent
+WHERE propertyNo=(SELECT DISTINCT propertyNo
+		FROM viewing
+		WHERE comments='too small');
+6. Mike-ийн бүртгэлийг хийсэн ажилтны хариуцан ажиллаж буй үл хөдлөх хөрөнгийн мэдээллийг
+гаргана уу.
+SELECT *
+FROM propertyforrent
+WHERE staffNo=(SELECT staffNo
+		FROM registration
+		WHERE clientNo=(SELECT ClientNo
+				FROM client1
+				WHERE fName='Mike'));
+7. Бүртгэлийн хүснэгтэд 2003-3-7-нд бүртгэл хийсэн ажилтны ажилладаг салбарын дугаар, тухайн
+салбар байрлах гудамж, уг ажилтны код, нэр, төрсөн огноог харуулна уу.
+SELECT fName, DOB
+FROM staff
+WHERE branchNo=(SELECT branchNo, street, staffNo
+	FROM propertyforrent
+	WHERE staffNo=(SELECT staffNo
+			FROM registration
+			WHERE dateJoined='2003-03-07'));
+
+8. "Carol"-н түрээсийн үнээс бага түрээсийн үнэтэй үл хөдлөх хөрөнгийн мэдээллийг гаргана уу.
+SELECT *
+FROM propertyforrent
+WHERE rent>(SELECT MAX(rent)
+		FROM propertyforrent
+		WHERE ownerNo=(SELECT ownerNo
+				FROM privateowner
+				WHERE fName='Carol'));
+
+9. Салбарыг хотуудаар ангилж хот бүрд хэдэн салбартайг тоолж гаргана уу.
+SELECT city, COUNT(branchNo) AS salbariintoo
+FROM propertyforrent
+GROUP BY city;
+
+
+10. "Tony"-н түрээсийн үнээс их түрээсийн үнэтэй үл хөдлөх хөрөнгийн мэдээллийг гаргана уу.
+
+SELECT *
+FROM propertyforrent
+WHERE rent>(SELECT rent
+		FROM propertyforrent
+		WHERE ownerNo=(SELECT ownerNo
+				FROM privateowner
+				WHERE fName='Tony'));
+
+11. Харилцагчдын хамгийн их сонирхсон үл хөдлөх хөрөнгийн мэдээллийг харуулна уу.
+
+SELECT *
+FROM propertyforrent
+WHERE propertyNo IN (SELECT propertyNo
+		FROM viewing
+		GROUP BY propertyNo HAVING COUNT(propertyNo)>1
+		ORDER BY COUNT(propertyNo) DESC
+		);
+12. Хамгийн сүүлд бүртгэсэн харилцагчийн мэдээллийг харуулна уу.
+SELECT *
+FROM registration
+WHERE datejoined = (SELECT datejoined 
+                    FROM registration
+                    WHERE datejoined
+                    ORDER BY COUNT(Datejoined)
+                    LIMIT 1);
+13. Бүртгэлийн хүснэгтэд 2004-1-2-нд бүртгэл хийсэн ажилтны мэдээллийг гаргана уу.
+SELECT *
+FROM staff
+WHERE staffNo IN (SELECT staffNo
+                  FROM registration
+                  WHERE datejoined = "2004-01-02");
+14. Үл хөдлөх хөрөнгө үзсэн хүснэгтэд 2004 оны 5-р сард бүртгэгдсэн харилцагчдын мэдээллийг гаргана уу.
+SELECT *
+FROM client1
+WHERE clientNo IN (SELECT DISTINCT clientNo
+          FROM viewing
+          WHERE viewdate BETWEEN "2004-05-01" AND "2004-05-31");
+15. Хоёроос олон үл хөдлөх хөрөнгө бүртгэгдсэн хотын нэр, үл хөдлөх хөрөнгийн тоог гаргана уу.
+SELECT city, COUNT(city) AS UHHtoo
+FROM propertyforrent		
+GROUP BY city
+HAVING COUNT(city) >= 2;
+16. Ажилтан, харилцагч, хувийн эзэмшигч гэсэн хүснэгтүүдийг нэгтгэж нэрсийн жагсаалтыг гаргана уу
+(UNION).
+(SELECT fName,lName
+FROM staff)
+UNION
+(SELECT fName,lName
+FROM client1)
+UNION
+(SELECT fName,lName
+FROM privateowner);
+17. Харилцагч болон хувийн эзэмшигчдээс 22 гэсэн тоо орсон утасны дугаартай хүмүүсийн нэр, овог, утасны
+дугаарыг харуулна уу (UNION).
+(SELECT lname,fname,telno
+FROM client1
+WHERE telno LIKE "%22%") 
+UNION
+(SELECT lname,fname,telno
+FROM privateowner
+WHERE telno LIKE "%22%");
+18. 3 өрөөтэй Flat төрлийн үл хөдлөх хөрөнгө түрээслүүлэх гэж буй эзэмшигчийн мэдээллийг харуулна уу.
+SELECT *
+FROM privateowner
+WHERE ownerno IN (SELECT ownerNo
+                  FROM propertyforrent
+                  WHERE rooms=3 AND type1="Flat");
+19. London хотод ажилладаг ажилчдын нэр, албан тушаал, цалингийн мэдээллийг харуулна уу. Цалинг өсөхөөр
+эрэмбэлнэ үү.
+SELECT fname,position1,salary
+FROM staff
+WHERE branchno IN (SELECT branchno
+                   FROM branch
+                   WHERE city="London")
+ORDER BY (salary) ASC;
+20. Aline хэдэн оны хэдэн сарын хэдэнд ямар дугаартай үл хөдлөх хөрөнгө үзээд юу гэсэн сэтгэгдэл үлдээсэн
+бэ?
+SELECT viewdate, propertyno, comments
+FROM viewing
+WHERE clientno IN (SELECT clientno
+                   FROM client1
+                   WHERE fname= "Aline");
+21. 4-н өрөөтэй орон сууц хариуцан ажиллаж байгаа эмэгтэй ажилчдын овог, нэр, албан тушаалын
+мэдээллийг гаргана уу. Салбараар нь эрэмбэлж харуулна уу.
+SELECT lname,fname,position1
+FROM staff
+WHERE sex="F" AND  staffno IN (SELECT staffno
+		   FROM propertyforrent
+                   WHERE rooms = 4 AND type1= "flat")
+ORDER BY branchNo; 
+22. Үл хөдлөх хөрөнгийн мэдээллийг төрлөөр нь ангилж, төрөл бүрийн хувьд хамгийн их болон хамгийн бага
+үнийн мэдээллийг харуулна уу.
+SELECT type1, MAX(rent) AS maximum, MIN(rent) AS minimum
+FROM propertyforrent
+GROUP BY type1;
+23. Ажилчдын цалин нь дундаж цалингаас хэр зөрүүтэй байгааг харуулна уу.
+SELECT salary, AVG(salary) AS dundaj, salary-AVG(salary) AS zuruu
+FROM staff;
+24. 16 Argyll St гудамжинд байрлах салбарт ажилладаг ажилтны хариуцаж байгаа үл хөдлөх хөрөнгийн
+мэдээллийг гаргана уу.
+SELECT *
+FROM propertyforrent
+WHERE staffno IN (SELECT staffno
+                  FROM staff
+                  WHERE branchno IN (SELECT branchno
+				FROM branch
+				WHERE street = "16 Argyll St")); 
+25. B003 салбарын ажилчдын цалингаас их цалинтай ажилчдын мэдээллийг харуулна уу.
+SELECT *
+FROM staff
+WHERE salary > ( SELECT MAX(salary) 
+                  FROM staff
+                  WHERE branchno="B003");

@@ -1,0 +1,250 @@
+CREATE DATABASE lab_12
+CREATE TABLE Customers(
+			Customer_ID CHAR(10) NOT NULL PRIMARY KEY,
+			Customer_fName VARCHAR(20) NOT NULL,
+			Customer_lName VARCHAR(20) NOT NULL,
+			Customer_Address VARCHAR(40) NOT NULL,
+			Phonenumber VARCHAR (20) NOT NULL);
+
+INSERT INTO Customers(Customer_ID,Customer_lName,Customer_fName,Customer_Address,Phonenumber)
+VALUES	("C001","Altankhuyag","Bulgan-Erdene","Ulaanbatar,Bayangol,7/3 bair","8040-4239"),
+	("C002","Ukhnaa","Khurelsukh","Ulaanbatar,Khan-uul,Japan town","9902-2222"),
+	("C003","Baldan","Dorj","Ulaanbatar,Sukhbaatar,huuhdiin 100","95933-7502"),
+	("C004","Terbish","Enebish","Ulaanbatar,Baynzurkh, narantuul","9889-1711"),
+	("C005","Basbish","Burbish","Ulaanbatar,Bayangol, Neg gazar","8817-9871"),
+	("C006","Dashdorj","Natsagdorj","Ulaanbatar,Sukhbaatar, 31-r surguuli","9247-0247"),
+	("C007","Davaa","Munkh-Erdene","Ulaanbatar,Bayangol,20 bair","9009-9777"),
+	("C008","Gantogtoh","Ireedui","Ulaanbatar,Khanuul,220k","9911-1213");
+
+CREATE TABLE Categories(
+			Category_ID VARCHAR(10) NOT NULL PRIMARY KEY, 
+			Category_name VARCHAR(10) NOT NULL, 
+			Category_type VARCHAR(30) NOT NULL);
+INSERT INTO Categories(Category_ID,Category_name,Category_type)
+VALUES ("CAT1","Processor","PC PART"),
+	("CAT2","Monitor","PC PART"),
+	("CAT3","Mice","PC PART"),
+	("CAT4","Keyboard","PC PART"),
+	("CAT5","Headset","PC PART"),
+	("CAT6","Microphone","PC PART");
+	
+
+CREATE TABLE Products(
+			Product_ID VARCHAR(10) NOT NULL PRIMARY KEY,
+			Category_ID VARCHAR(10) NOT NULL,
+			Seller_ID VARCHAR(10) NOT NULL,
+			Product_Name VARCHAR(20)NOT NULL,
+			Product_price INT NOT NULL,
+			FOREIGN KEY(Seller_ID) REFERENCES Seller(Seller_ID) ON UPDATE CASCADE ON DELETE NO ACTION,
+			FOREIGN KEY(Category_ID ) REFERENCES Categories(Category_ID) ON UPDATE NO ACTION ON DELETE NO ACTION);
+INSERT INTO Products(Product_ID, Category_ID, Seller_ID, Product_name,product_price)
+VALUES ("P001","CAT1","S001","T-bao R9",2000),
+	("P002","CAT1","S001","T-bao R8",1600),
+	("P003","CAT1","S001","T-bao R7",1400),
+	("P004","CAT1","S001","T-bao R6",1000),
+	("P005","CAT2","S002","DELL 4K",600),
+	("P006","CAT2","S002","DELL 2K",700),
+	("P007","CAT2","S005","BENQ 144Hz",500),
+	("P008","CAT2","S003","ASUS 144Hz",600),
+	("P009","CAT3","S004","RIVAL 310",69),
+	("P010","CAT3","S004","RIVAL 3",40),
+	("P011","CAT4","S004","APEX PRO",90),
+	("P012","CAT3","S005","ZOWIE FK1",69),
+	("P013","CAT4","S006","ALLOY FPS",79),
+	("P014","CAT4","S007","LOGITECH G512",80),
+	("P015","CAT5","S004","ARCTIC 7",100),
+	("P016","CAT5","S006","HYPERX CORE",80),
+	("P017","CAT6","S006","HYPERX QUADCAST",200);
+
+CREATE TABLE Seller(
+			seller_ID VARCHAR(10) NOT NULL PRIMARY KEY,
+			seller_name VARCHAR(20) NOT NULL);
+
+INSERT INTO Seller(seller_id,seller_name)
+VALUES ("S001","T-bao"),
+	("S002","DELL"),
+	("S003","ASUS"),
+	("S004","STEELSERIES"),
+	("S005","ZOWIE"),
+	("S006","HYPERX"),
+	("S007","LOGITECH");
+			
+CREATE TABLE Payment(
+			Payment_ID VARCHAR(10) NOT NULL PRIMARY KEY,
+			Customer_ID VARCHAR(10) NOT NULL,
+			Product_ID VARCHAR(10) NOT NULL,
+			date1 DATE NOT NULL,
+			FOREIGN KEY (Product_ID) REFERENCES Products(Product_ID) ON UPDATE CASCADE ON DELETE NO ACTION,
+			FOREIGN KEY (Customer_ID) REFERENCES Customers(Customer_ID) ON UPDATE CASCADE ON DELETE NO ACTION);
+INSERT INTO Payment(Payment_ID,Customer_ID,Product_ID,date1)
+VALUES	("PM1","C001","P007","2021-03-21"),
+	("PM2","C001","P011","2020-02-14"),
+	("PM3","C002","P001","2019-06-20"),
+	("PM4","C007","P017","2022-09-11"),
+	("PM5","C008","P005","2015-03-20"),
+	("PM6","C008","P012","2018-06-01"),
+	("PM7","C008","P015","2019-12-31");
+
+CREATE TABLE Order1(
+			Order_ID VARCHAR(10) NOT NULL PRIMARY KEY, 
+			Customer_ID VARCHAR(10) NOT NULL, 
+			mod_ID VARCHAR(10) NOT NULL,
+			date2 DATE NOT NULL,
+			FOREIGN KEY (mod_ID) REFERENCES Moderator(mod_ID) ON UPDATE CASCADE ON DELETE NO ACTION,
+			FOREIGN KEY (Customer_ID) REFERENCES Customers(Customer_ID) ON UPDATE CASCADE ON DELETE NO ACTION);
+INSERT INTO Order1(Order_ID,Customer_ID,mod_ID,DATE2)
+VALUES ("O006","C001","MOD1","2021-03-21"),
+	("O005","C001","MOD2","2020-02-14"),
+	("O003","C002","MOD2","2019-06-20"),
+	("O007","C007","MOD1","2022-09-11"),
+	("O001","C008","MOD3","2015-03-20"),
+	("O002","C008","MOD3","2018-06-01"),
+	("O004","C008","MOD3","2019-12-31");
+
+CREATE TABLE Transaction1(
+			report_ID VARCHAR(10) NOT NULL PRIMARY KEY,
+			Customer_ID VARCHAR(10) NOT NULL,
+			Order_ID VARCHAR(10) NOT NULL,
+			Category_ID VARCHAR(10) NOT NULL, 
+			Product_ID VARCHAR(10) NOT NULL,
+			Payment_ID VARCHAR(10) NOT NULL,
+			FOREIGN KEY (Customer_ID) REFERENCES Customers(Customer_ID) ON UPDATE CASCADE ON DELETE NO ACTION,
+			FOREIGN KEY (Order_ID) REFERENCES Order1(Order_ID) ON UPDATE CASCADE ON DELETE NO ACTION,
+			FOREIGN KEY (Category_ID) REFERENCES Categories(Category_ID) ON UPDATE CASCADE ON DELETE NO ACTION,
+			FOREIGN KEY (Product_ID) REFERENCES Products(Product_ID) ON UPDATE CASCADE ON DELETE NO ACTION,
+			FOREIGN KEY (Payment_ID) REFERENCES Payment(Payment_ID) ON UPDATE CASCADE ON DELETE NO ACTION);
+INSERT INTO Transaction1(report_ID,Customer_ID,Order_ID,Category_ID,Product_ID,Payment_ID)
+VALUES ("RP1","C001","O006","CAT2","P007","PM1"),
+	("RP2","C001","O005","CAT5","P011","PM2"),
+	("RP3","C002","O003","CAT6","P001","PM3"),
+	("RP4","C007","O007","CAT1","P017","PM4"),
+	("RP5","C008","O001","CAT3","P012","PM6"),
+	("RP6","C008","O004","CAT2","P005","PM5");
+	
+
+CREATE TABLE Deliveries(
+			Deliveries_ID VARCHAR(10) NOT NULL PRIMARY KEY, 
+			Customer_ID VARCHAR(10) NOT NULL, 
+			DATE3 DATE NOT NULL,
+			Order_ID VARCHAR(10) NOT NULL,
+			FOREIGN KEY (Customer_ID) REFERENCES Customers(Customer_ID) ON UPDATE CASCADE ON DELETE  NO ACTION,
+			FOREIGN KEY (Order_ID) REFERENCES Order1(Order_ID) ON UPDATE CASCADE ON DELETE NO ACTION);
+INSERT INTO Deliveries(Deliveries_ID,Order_ID,Customer_ID,DATE3)
+VALUES ("D006","O006","C001","2021-03-21"),
+	("D005","O005","C001","2020-02-14"),
+	("D003","O003","C002","2019-06-20"),
+	("D007","O007","C007","2022-09-11"),
+	("D001","O001","C008","2015-03-20"),
+	("D002","O002","C008","2018-06-01"),
+	("D004","O004","C008","2019-12-31");
+
+CREATE TABLE Moderator(
+			mod_ID VARCHAR(10) NOT NULL PRIMARY KEY,
+			mod_fName VARCHAR(20) NOT NULL,
+			mod_lName VARCHAR(20) NOT NULL,
+			mod_phonenum VARCHAR(10) NOT NULL,
+			mod_address VARCHAR (20) NOT NULL);
+INSERT INTO Moderator(mod_ID,mod_fName,mod_lName,mod_phonenum,mod_address)
+VALUES ("MOD1","Yondon","Jamts","9999-1111","Bayngol Modnii II"),
+	("MOD2","Erdene","Sundui","8888-1011","Sukhbaatar 220K"),
+	("MOD3","Citi","Net","7011-1010","Baynzurh Buhiin urguu");
+
+
+1. "C001" ID-тай хэрэглэгчийн мэдээллийг гарга
+SELECT *
+FROM Customers
+WHERE Customer_ID="C001";
+2. Бүтээгдэхүүний дундаж үнийг гарга.
+SELECT AVG(product_price) AS dundaj
+FROM Products;
+3. 2020 онд төлсөн төлбөрийн мэдээллийг гарга
+SELECT *
+FROM payment
+WHERE date1 BETWEEN "2020-01-01" AND "2020-12-31";
+4. ASUS brand-ын бүтээгдэхүүнүүдийг гарга
+SELECT product_name
+FROM products
+WHERE seller_id=( SELECT seller_id
+FROM seller
+WHERE seller_name="ZOWIE");
+5. "2021-03-21"-нд захиалга өгсөн хэрэглэгчийн мэдээллийг гарга
+SELECT *
+FROM customers
+WHERE customer_ID=(SELECT customer_id
+FROM order1
+WHERE date2="2021-03-21");
+6. "Pm3" id тай төлөлтийн авсан барааны төрлийг гарга.
+SELECT category_name
+FROM categories
+WHERE category_id=(SELECT category_id
+FROM products
+WHERE product_id=(SELECT product_id
+FROM payment
+WHERE payment_id="PM3"));
+7. Steelseries brand-ийн бүтээгдэхүүнүүдий мэдээллийг гарга.
+SELECT p.*
+FROM seller s, products p
+WHERE s.seller_name="steelseries" AND s.seller_id=p.seller_id;
+8.
+SELECT *
+FROM order1 o
+LEFT JOIN customers c
+ON o.customer_id=c.customer_id;
+9. Үйлчлүүлэгчдийн хамгийн их худалдан авсан төрөл
+SELECT category_name
+FROM categories
+WHERE category_id=(SELECT c.category_id
+FROM payment pa, products pr, categories c
+WHERE pa.product_id=pr.product_id AND pr.category_id=c.category_id
+GROUP BY c.category_id
+ORDER BY COUNT(c.category_id) DESC
+LIMIT 1);
+
+~~~~~~~TABLE-ees TABLE-uusgeh~~~~~~~
+
+CREATE TABLE userproducts AS
+SELECT  ca.category_name, pr.product_name, pr.product_price
+FROM products pr, categories ca
+WHERE ca.category_id=pr.category_id;
+
+~~~~~~IF bolon CASE~~~~~~~
+
+SELECT product_name, category_id,
+CASE  Category_ID
+WHEN 'CAT1' THEN 'Processor'
+WHEN 'CAT2' THEN 'Monitor'
+WHEN 'CAT3' THEN 'Mice'
+WHEN 'CAT4' THEN 'Keyboard'
+WHEN 'CAT5' THEN 'Headset'
+WHEN 'CAT6' THEN 'Microphone'
+ELSE 'tiim_ym_alga' 
+ END AS Category_name
+ FROM products;
+
+
+SELECT  *, IF( mod_ID LIKE 'MOD%', "MOD CHECKED", "CHECKLEEGUENSHDEEE") AS MODCHECKLSIMU
+FROM order1;
+
+
+~~~~~~~~3 хуурмаг хүснэгт үүсгэх~~~~~~~~~~
+
+1. Хэрэглэгчээс харагдах бүтээгдэхүүний хэсэг.
+
+CREATE VIEW Uproducts AS
+SELECT c.category_name, p.product_name,p.product_price
+FROM categories c, products p
+WHERE p.category_id=c.category_id;
+
+2. Хэрэглэгчээс харагдах гүйлгээний мэдээллийн хэсэг.
+
+CREATE VIEW Utransaction AS
+SELECT ca.category_name, pr.product_name, pr.product_price, o.order_id, cu.customer_fname
+FROM categories ca, products pr, customers cu, order1 AS o, transaction1 tr
+WHERE tr.category_id=ca.category_id AND tr.product_id=pr.product_id AND tr.order_id=o.order_id AND tr.customer_id=cu.customer_id;
+
+3. Борлуулагч талаас барааг харах хэсэг.
+
+CREATE VIEW Sproduction AS
+SELECT c.*, p.product_id, seller_id, product_name, product_price
+FROM categories c, products p
+WHERE c.category_id=p.category_id;

@@ -1,0 +1,322 @@
+CREATE DATABASE LAB_11
+CREATE TABLE Branch(
+	branchNo VARCHAR(20),
+	street VARCHAR(25),
+	city VARCHAR(20),
+	postcode VARCHAR(20)
+);
+INSERT INTO Branch(branchNo, street, city, postcode)
+VALUES("B005","22 Deer Rd","London","SW1 4EH"),
+      ("B007","16 Argyll ST","Aberdeen","AB2 3SU"),
+      ("B003","163 Main St","Glasgow","G11 9QX"),
+      ("B004","32 Manse Rd","Bristol","BS99 1NZ"),
+      ("B002","56 Clover Dr","London","NW10 6EU");
+      
+          CREATE TABLE Staff(
+		staffNo VARCHAR(5),
+		FName VARCHAR(15),
+		LName VARCHAR(15),
+		position1 VARCHAR(15),
+		sex VARCHAR(2),
+		DOB DATE, 
+		salary INT,
+		branchNo VARCHAR(5) );
+INSERT INTO Staff(staffNo, fName, LName, position1, sex, DOB, salary, branchNo)
+VALUES("SL21","John","White","Manager","M","1945-10-1",30000,"B005"),
+	("SG37","Ann","Beech","Assistant","F","1960-11-10",12000,"B003"),
+	("SG14","David","Ford","Supervisor","M","1958-03-24",18000,"B003"),
+	("SA9","Mary","Howe","Assistant","F","1970-02-19",9000,"B007"),
+	("SG5","Susan","Brand","Manager","F","1940-06-03",24000,"B003"),
+	("SL41","Julia","Lee","Assistant","F","1965-06-13",9000,"B005");
+	
+	
+CREATE TABLE PropertyForRent(
+	propertyNo VARCHAR(20),
+	street VARCHAR(25),
+	city VARCHAR(25),
+	postcode VARCHAR(25),
+	type1 VARCHAR(25),
+	rooms INT,
+	rent INT,
+	ownerNo VARCHAR(25),
+	staffNo VARCHAR(25),
+	branchNo VARCHAR(25)
+	);
+	
+INSERT INTO PropertyForRent(propertyNo, street, city, postcode, type1, rooms, rent, ownerNo, staffNo, branchNo)
+VALUES ("PA14","16 Holhead","Aberdeen","AB7 5SU","House",6,650,"CO46","SA9","B007"),
+	("PL94","6 Argyll St","London","NW2","Flat",4,400,"CO87","SL41","B005"),
+	("PG4","6 Lawrence St","Glasgow","G11 9QX","Flat",3,350,"CO40"," ","B003"),
+	("PG36","2 Manor Rd","Glasgow","G32 4QX","Flat",3,375,"CO87","SG37","B003"),
+	("PG21","18 Dale Rd","Glasgow","G12","House",5,600,"CO87","SG37","B003"),
+	("PG16","5 Novar Dr","Glasgow","G12 9 AX","Flat",4,450,"CO93","SG14","B003");
+
+CREATE TABLE Client1(
+	ClientNo VARCHAR(25),
+	fName VARCHAR(25),
+	lName VARCHAR(25),
+	telNo VARCHAR(25),
+	prefType VARCHAR(25),
+	maxRent INT
+	);
+	
+INSERT INTO Client1(ClientNo, fName, lName, telNo, prefType, maxRent)
+VALUES ("CR76","John","Kay","0207-774-5632","Flat",425),
+	("CR56","Aline","Stewart","0141-848-1825","Flat",350),
+	("CR74","Mike","Ritchie","01475-392178","House",750),
+	("CR62","Mary","Tregear","01224-196720","Flat",600);
+	
+CREATE TABLE PrivateOwner(
+	ownerNo VARCHAR(25),
+	fName VARCHAR(25),
+	lName VARCHAR(25),
+	address VARCHAR(25),
+	telNo VARCHAR(25)
+	);
+	
+INSERT INTO PrivateOwner (ownerNo , fName, lName, address, telNo)
+VALUES	("CO46","Joe","Keogh","2 Fergus Dr,Aberdeen AB2 7SX","01224-861212"),
+	("CO87","Carol","Farrel","6 Achray St, Glasgow G32 9DX","0141-357-7419"),
+	("CO40","Tina","Murphy","63 Well St, Glasgow G42","0141-943-1728"),
+	("CO93","Tony","Shaw","12 Park Pl, Glasgow G4 0QR","0141-225-7025");
+
+CREATE TABLE Viewing(
+	clientNo VARCHAR(25),
+	propertyNo VARCHAR(25),
+	viewDate DATE,
+	comments VARCHAR(25)
+	);
+	
+INSERT INTO Viewing( clientNo, propertyNo, viewDate, comments)
+VALUES	("CR56","PA14","2004-05-24","too small"),
+	("CR76","PG4","2004-04-04","too remote"),
+	("CR56","PG4","2004-05-26"," "),
+	("CR62","PA14","2004-05-14","no dining room"),
+	("CR56","PG36","2004-04-28"," ");
+	
+CREATE TABLE Registration(
+	clientNo VARCHAR(25),
+	branchNo VARCHAR(25),
+	staffNo VARCHAR(25),
+	dateJoined DATE
+	);
+	
+INSERT INTO Registration( clientNo, branchNo, staffNo, dateJoined)
+VALUES ("CR76","B005","SL41","2004-01-02"),
+	("CR56","B003","SG37","2003-04-11"),
+	("CR74","B003","SG37","2002-11-16"),
+	("CR62","B007","SA9","2003-03-07");
+
+CREATE TABLE Hotel(
+	           hotelNo VARCHAR(20),
+	           hotelName VARCHAR(20),
+	           city VARCHAR(20),
+	           PRIMARY KEY (hotelNo));
+
+INSERT INTO Hotel(hotelNo,hotelName,city)
+VALUES  ("H001","Amure","Ulaanbaatar"),
+	("H002","Ramada","Erdenet"),
+	("H003","Bayngol","Osaka"),
+	("H004","ShangriLa","Bern"),
+	("H005","Ulaanbaatar","Kyoto");
+
+CREATE TABLE Room(
+		  roomNo INT,
+		  hotelNo VARCHAR(20),
+		  bed INT,
+		  price INT,
+		  PRIMARY KEY(roomNo),
+		  FOREIGN KEY (hotelNo) REFERENCES Hotel(hotelNo));
+		  
+INSERT INTO Room(roomNo, hotelNo, bed, price)
+VALUE (001,"H001", 2,150),
+	(004,"H001", 2,50),
+	(002,"H001", 2,370),
+	(003,"H001", 2,250),
+	(025,"H002", 1,50),
+	(027,"H002", 1,600),
+	(028,"H002", 1,750),
+	(101,"H003", 3,230),
+	(102,"H003", 3,260),
+	(103,"H003", 3,180),
+	(247,"H004", 4,2000),
+	(248,"H004", 4,530),
+	(249,"H004", 4,1000),
+	(666,"H005", 1,190),
+	(667,"H005", 1,300),
+	(668,"H005", 1,5000);
+
+CREATE TABLE Booking(
+		     hotelNo VARCHAR(20),
+		     roomNo INT,
+		     guestNo VARCHAR(20),
+		     dateFrom DATE,
+		     dateTo DATE,
+		     FOREIGN KEY(hotelNo) REFERENCES Hotel(hotelNo),
+		     FOREIGN KEY(roomNo) REFERENCES Room(roomNo),
+		     FOREIGN KEY(guestNo) REFERENCES Guest(guestNo));
+		     
+INSERT INTO Booking(hotelNo, roomNo, guestNo, dateFrom, dateTo)
+VALUES ("H001",004,"G1","2022-03-21","2022-03-25"),
+	("H002",027,"G2","2022-09-21","2022-11-20"),
+	("H003",102,"G3","2021-05-21","2021-07-25"),
+	("H004",248,"G4","2021-02-05","2021-02-14"),
+	("H004",248,"G4","2022-02-15","2023-02-21"),
+	("H005",666,"G5","2022-07-11","2022-09-11"),
+	("H001",002,"G6","2021-04-01","2022-09-15"),
+	("H001",003,"G7","2022-01-21","2022-02-25"),
+	("H002",028,"G8","2020-03-21","2022-03-26"),
+	("H002",027,"G9","2019-04-21","2020-01-01"),
+	("H004",247,"G4","2019-12-01","2020-12-25"),
+	("H005",667,"G10","2015-05-20","2015-07-01"),
+	("H004",248,"G10","2018-01-21","2018-02-14"),
+	("H003",103,"G1","2022-04-01","2022-09-25"),
+	("H003",102,"G10","2021-02-21","2021-03-18");
+	
+
+
+CREATE TABLE Guest(
+		   guestNo VARCHAR(20) PRIMARY KEY,
+		   guestName VARCHAR(20),
+		   guestAddress VARCHAR(20),
+		   phonenumber VARCHAR(20));
+		   
+INSERT INTO Guest(guestNo, guestName, guestAddress, phonenumber)
+VALUES ("G1","Baldan","G0321","9999-9778"),
+	("G2","Perenlee","G1321","8888-9778"),
+	("G3","Choinhor","G2324","9911-9911"),
+	("G4","Sengee","G3312","9998-9778"),
+	("G5","Dorj","G4521","4799-8878"),
+	("G6","Mark","G8721","9999-9999"),
+	("G7","Terbish","G0891","9559-9778"),
+	("G8","Enebish","G0761","9899-1248"),
+	("G9","Burbish","G9651","6198-7558"),
+	("G10","Basbish","G2471","9129-9713");
+
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~LAB 11~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+1. Бүртгэлийн хүснэгтээс хэн хэнтэй хамт ажилласныг нэг өгүүлбэрээр буюу нэг баганад
+оруулж харуулна уу.
+Жишээ: L.Julie 1 sariin 2-nd London-n salbart K.John-toi ajillajee. SUBSTRING, CONCAT
+функцуудыг ашиглана уу.
+
+SELECT CONCAT(SUBSTRING(s.lname,1,1),'.',s.fname,' ',SUBSTRING(r.datejoined,6,2),' ', 'sariin',' ', SUBSTRING(r.datejoined,9,2),'-nd',' ', b.city,'-n salbart',' ',SUBSTRING(c.lname,1,1),'.', c.fname,'-toi ajillajeee') AS hamtajillagsad
+FROM registration r, client1 c, branch b, staff s
+WHERE r.staffno=s.staffno AND r.clientno=c.clientno  AND s.branchno=b.branchno AND r.branchno=b.branchno AND s.branchno=r.branchno;
+
+2. StaffInfo хүснэгт үүсгэнэ үү. staffNo, fullName, POSITION, branchAddress, propCount,
+clientCount гэсэн багануудтай. Хүснэгтэнд QUERY ашиглан өгөгдөл оруулна уу.
+
+CREATE TABLE StaffInfo AS
+SELECT DISTINCT s.staffno AS staffNo,CONCAT(s.fname,' ', s.lname) AS fullName, s.position1 AS POSITION1 , CONCAT(b.street,' ',b.city) AS branchAddress,COUNT(p.staffno) AS propCount, COUNT(c.clientno) AS clientCount
+FROM staff s, propertyforrent p, branch b, client1 c, registration r
+WHERE b.branchno=s.branchno
+
+3. Ажилтан бүрийн хариуцан ажиллаж байгаа үл хөдлөх хөрөнгийн тоо ямар байгааг
+харуулна уу? Үл хөдлөх хөрөнгийн тоо 0-50 бол “хэвийн”
+, 60-аас дээш бол “их” гэсэн
+мэдээлэл гаргана уу. IF функцийг ашиглана уу.
+
+SELECT IF(COUNT(p.propertyno) BETWEEN 0 AND 50, 'xeviin','ix')
+FROM staff s, propertyforrent p
+WHERE s.staffno=p.staffno
+GROUP BY p.staffno;
+
+4. Tony Shaw-н үл хөдлөх хөрөнгийн үнийг 500, ажилтны дугаарыг SA9 болгоно уу.
+
+UPDATE privateowner o, propertyforrent p
+SET p.rent=500, p.staffno='SA9'
+WHERE o.lname='Shaw' AND o.fname='Tony' AND p.ownerno=o.ownerno;
+
+5. B003 салбарын ажилтнуудын хариуцан ажиллаж байгаа үл хөдлөх хөрөнгийн үнийг 15%-
+аар нэмэгдүүлнэ үү.
+
+UPDATE propertyforrent p, staff s
+SET p.rent=p.rent*1.15
+WHERE s.staffno=p.staffno AND s.branchno='B003'
+
+6. Бүртгэлийн хүснэгтэд 4-р сард бүртгэсэн мэдээллийг 5-н сар болгож өөрчилнө үү.
+DATE_ADD функцийг ашиглана уу.
+
+UPDATE registration 
+SET datejoined=DATE_ADD(datejoined,INTERVAL 1 MONTH)
+WHERE datejoined LIKE '%-04-%';
+
+7. Үл хөдлөх хөрөнгийн нөөц хүснэгтээс хариуцах ажилтангүй мэдээллийг устгана уу.
+
+DELETE FROM propertyforrent
+WHERE staffno=' ';
+
+8. Үл хөдлөх хөрөнгийн нөөц хүснэгтээс 16 Argyll St гудамжинд байрладаг, House төрлийн
+орон сууцны мэдээллийг устгана уу
+
+DELETE FROM propertyforrent
+WHERE street='16 Argyll St' AND type1='House'
+
+1. Зочид буудлын захиалгын мэдээллийг нэг өгүүлбэрт оруулж харуул. Жишээ: Бат
+"Улаанбаатар" зочид буудлын 45000 үнэтэй "VIP" өрөөнд 11-р сарын 16-нд буудаллажээ.
+
+SELECT CONCAT(guestname,' ',h.city,' ','зочид буудлын',' ',r.price,' ','үнэтэй',' ', r.roomNo,' ','өрөөнд',' ',SUBSTRING(b.datefrom,6,2),'-р',' ','сарын',' ',SUBSTRING(b.datefrom,9,2),'-нд',' ','буудаллажээ')
+FROM hotel h, booking b, guest g, room r
+WHERE g.guestno=b.guestno AND h.hotelno=r.hotelno AND r.roomno=b.roomno;
+
+2. Зочид буудлуудын хамгийн хямд үнэтэй, шууд захиалах боломжтой
+өрөөнүүдийн мэдээллийг шүүж харуулна уу.
+
+SELECT r.*
+FROM hotel h, room r, booking b
+WHERE h.hotelno=r.hotelno AND b.dateto<NOW()
+GROUP BY r.hotelno
+ORDER BY r.price ASC
+LIMIT 1;
+
+3. Хамгийн цөөн тоогоор захиалга авсан өрөөний мэдээллийг үнийг нь өсөхөөр
+эрэмбэлж гаргана уу.
+
+SELECT *
+FROM room
+WHERE  hotelno=(SELECT hotelno
+		FROM booking
+		GROUP BY hotelno
+		ORDER BY COUNT(guestno) ASC
+		LIMIT 1)
+ORDER BY price ASC;
+
+4. Зочид буудал бүрийн сүүлийн 3 сарын хугацаанд буудалласан зочдын мэдээллийг
+харуулна уу.
+
+SELECT *
+FROM guest
+WHERE guestno IN(SELECT guestno
+		FROM booking
+		WHERE DATE(datefrom) >= (DATE(NOW()) - INTERVAL 3 MONTH));
+
+5. Зочид буудал бүрд хамгийн олон удаа буудалласан 1, 1 зочны мэдээллийг харуулна
+уу.
+
+SELECT hotelno, COUNT(guestno)
+FROM booking
+GROUP BY hotelno;
+
+6. Зочид буудлын нөөц хүснэгт үүсгэж мэдээллийг хуулж оруулах QUERY бичнэ үү.
+
+
+CREATE TABLE cloneofhotel SELECT * FROM hotel;
+
+7. HotelInformation гэсэн хүснэгт үүсгэж QUERY-ээр тохирох өгөгдлүүдийг оруулна уу.
+HotelInformation(HotelNo, HotelName, RoomCount, MaxPrice, MinPrice, AvgPrice, City)
+
+CREATE TABLE HotelInformation AS
+SELECT h.hotelno AS HotelNo, h.hotelname AS HotelName, COUNT(r.roomno) AS RoomCount, MAX(r.price) AS MaxPrice, MIN(r.price) AS MinPrice, AVG(r.price) AS AvgPrice, City
+FROM hotel h, room r
+WHERE r.hotelno=h.hotelno
+GROUP BY r.hotelno;
+
+8. Чингис зочид буудлын өрөөний үнийг 0.2 хувиар нэмэгдүүлнэ үү
+
+UPDATE room r, hotel h
+SET r.price=r.price*1.2
+WHERE h.hotelname='Chingis' AND h.hotelno=r.hotelno;
