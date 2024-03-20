@@ -1,0 +1,38 @@
+digraph G{
+	graph [ordering="out",nodesep="1"];
+    
+    5 [xlabel="len=9\nh=4"];
+    3 [xlabel="len=2\nh=2"];
+    10 [xlabel="len=1\nh=1"];
+    n1 [label="", shape="square"]
+    4 [xlabel="len=1\nh=1"];
+    20 [xlabel="len=2\nh=2"];
+    15 [xlabel="len=6\nh=3"];
+    11 [xlabel="len=3\nh=2"];
+    17 [xlabel="len=1\nh=1"];
+    14 [xlabel="len=1\nh=1"];
+    n2 [label="", shape="square"]
+    n3 [label="", shape="square"]
+    n4 [label="", shape="square"]
+    n5 [label="", shape="square"]
+    n6 [label="", shape="square"]
+    n7 [label="", shape="square"]
+    n8 [label="", shape="square"]
+
+    5 -> 3;
+    5 -> 15;
+    3 -> n1;
+    3 -> 4;
+    15 -> 11;
+    15 -> 20;
+    11 -> 10;
+    11 -> 14;
+    20 -> 17;
+    20 -> n6;
+    10 -> n2;
+    10 -> n3;
+    14 -> n4;
+    14 -> n5;
+    17 -> n7;
+    17 -> n8;
+}
