@@ -1,0 +1,5 @@
+Demon Slayer,Gotouge,1960-07-11,shueisha,12.99,5000000
+My Hero Academia.,Horikoshi,1949-06-08,shueisha,9.99,8000000
+Chainsaw Man,Fujimoto,1925-04-10,shueisha,10.50,3500000
+Kimagure Orange Road,Matsumoto,1951-07-16,shōnen jump,11.99,4500000
+Kyo Kara Maoh!,Matsumoto,1813-01-28,Deen,8.75,6000000
