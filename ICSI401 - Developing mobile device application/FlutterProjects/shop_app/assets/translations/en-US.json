@@ -1,0 +1,13 @@
+{   
+    "products": "Products",
+    "cart": "Cart",
+    "shop": "Shop",
+    "bag": "Bag",
+    "favorite": "Favorite",
+    "profile": "Profile",
+    "login": "Login",
+    "username": "Username",
+    "password": "Password",
+    "logout": "Logout",
+    "buy": "Buy All"
+}
