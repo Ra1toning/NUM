@@ -1,0 +1,320 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ButtonBar?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.StudentModuleController">
+   <left>
+      <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="280.0" style="-fx-background-color: #6f5cc2;" BorderPane.alignment="CENTER">
+         <children>
+            <ButtonBar prefHeight="23.0" prefWidth="280.0" />
+            <Circle fx:id="profile" fill="#1f93ff" radius="75.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="5.0" />
+            <ButtonBar prefHeight="10.0" prefWidth="280.0" />
+            <Label alignment="BASELINE_CENTER" contentDisplay="TOP" graphicTextGap="60.0" text="ADMIN" textFill="WHITE">
+               <font>
+                  <Font name="Arial Mon Bold" size="18.0" />
+               </font>
+            </Label>
+            <ButtonBar prefHeight="36.0" prefWidth="280.0" />
+            <Button fx:id="StudentModule" alignment="BASELINE_LEFT" graphicTextGap="10.0" mnemonicParsing="false" onAction="#switchModule" prefHeight="66.0" prefWidth="297.0" stylesheets="@../../../css/style.css" text="СУРАГЧИЙН ХЭСЭГ" textFill="WHITE">
+               <font>
+                  <Font name="Arial Mon Bold" size="12.0" />
+               </font>
+               <padding>
+                  <Insets left="30.0" />
+               </padding>
+               <graphic>
+                  <ImageView fitHeight="18.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../icons/students-icon.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button fx:id="TeacherModule" alignment="BASELINE_LEFT" graphicTextGap="10.0" mnemonicParsing="false" onAction="#switchModule" prefHeight="66.0" prefWidth="297.0" stylesheets="@../../../css/style.css" text="БАГШИЙН ХЭСЭГ" textFill="WHITE">
+               <font>
+                  <Font name="Arial Mon Bold" size="12.0" />
+               </font>
+               <padding>
+                  <Insets left="30.0" />
+               </padding>
+               <graphic>
+                  <ImageView fitHeight="18.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../icons/instructor-icon.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button fx:id="CourseModule" alignment="BASELINE_LEFT" graphicTextGap="10.0" mnemonicParsing="false" onAction="#switchModule" prefHeight="66.0" prefWidth="297.0" stylesheets="@../../../css/style.css" text="ХИЧЭЭЛИЙН ХЭСЭГ" textFill="WHITE">
+               <font>
+                  <Font name="Arial Mon Bold" size="12.0" />
+               </font>
+               <padding>
+                  <Insets left="30.0" />
+               </padding>
+               <graphic>
+                  <ImageView fitHeight="18.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../icons/course-icon.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button fx:id="StudModule" alignment="BASELINE_LEFT" graphicTextGap="10.0" mnemonicParsing="false" onAction="#switchModule" prefHeight="66.0" prefWidth="297.0" stylesheets="@../../../css/style.css" text="ХИЧЭЭЛ СОНГОЛТ" textFill="WHITE">
+               <font>
+                  <Font name="Arial Mon Bold" size="12.0" />
+               </font>
+               <padding>
+                  <Insets left="30.0" />
+               </padding>
+               <graphic>
+                  <ImageView fitHeight="18.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../icons/checker.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <ButtonBar prefHeight="116.0" prefWidth="280.0" />
+            <Button fx:id="CloseButton" alignment="CENTER" contentDisplay="CENTER" graphicTextGap="50.0" mnemonicParsing="false" onAction="#CloseButtonOnAction" prefHeight="25.0" prefWidth="188.0" text="ГАРАХ">
+               <font>
+                  <Font name="Arial Mon Bold" size="12.0" />
+               </font>
+            </Button>
+         </children>
+      </VBox>
+   </left>
+   <top>
+      <HBox alignment="CENTER_LEFT" prefHeight="50.0" prefWidth="250.0" style="-fx-background-color: #52438F;" BorderPane.alignment="CENTER">
+         <children>
+            <Label graphicTextGap="10.0" text="СУРГАЛТЫН УДИРДЛАГЫН СИСТЕМ" textFill="WHITE">
+               <font>
+                  <Font name="Arial Mon Bold" size="14.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="25.0" fitWidth="64.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../icons/num-logo.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Label>
+         </children>
+         <padding>
+            <Insets left="25.0" />
+         </padding></HBox>
+   </top>
+   <center>
+      <AnchorPane prefHeight="670.0" prefWidth="995.0" BorderPane.alignment="CENTER">
+         <children>
+            <BorderPane fx:id="studentForm" layoutX="2.0" prefHeight="665.0" prefWidth="997.0">
+               <top>
+                  <HBox alignment="CENTER_LEFT" prefHeight="50.0" prefWidth="250.0" spacing="10.0" BorderPane.alignment="CENTER">
+                     <children>
+                        <Label graphicTextGap="10.0" text="СУРАГЧИЙН ХЭСЭГ">
+                           <font>
+                              <Font name="Arial Mon Bold" size="14.0" />
+                           </font>
+                        </Label>
+                        <Button fx:id="addButton" alignment="CENTER" contentDisplay="CENTER" graphicTextGap="10.0" mnemonicParsing="false" onAction="#StudentButtonOnAction" prefHeight="32.0" prefWidth="180.0" styleClass="button2" stylesheets="@../../../css/style.css" text="НЭМЭХ" textFill="#6156e4">
+                           <font>
+                              <Font name="Arial" size="12.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="removeButton" alignment="CENTER" graphicTextGap="10.0" mnemonicParsing="false" onAction="#removeStudent" prefHeight="32.0" prefWidth="77.0" styleClass="button2" stylesheets="@../../../css/style.css" text="ХАСАХ" textFill="#ff4747">
+                           <font>
+                              <Font name="Arial Bold" size="12.0" />
+                           </font>
+                        </Button>
+                     </children>
+                     <padding>
+                        <Insets left="25.0" />
+                     </padding>
+                  </HBox>
+               </top>
+               <center>
+                  <BorderPane prefHeight="615.0" prefWidth="914.0" BorderPane.alignment="CENTER">
+                     <center>
+                        <TableView fx:id="tbStudents" prefHeight="615.0" prefWidth="988.0" stylesheets="@../../../css/style.css" BorderPane.alignment="CENTER">
+                          <columns>
+                            <TableColumn fx:id="tcID" prefWidth="75.0" text="SISi_ID" />
+                            <TableColumn fx:id="tcFName" prefWidth="75.0" text="Нэр" />
+                              <TableColumn fx:id="tcLName" prefWidth="75.0" text="Овог" />
+                              <TableColumn fx:id="tcGender" prefWidth="75.0" text="Хүйс" />
+                              <TableColumn fx:id="tcRD" prefWidth="90.0" text="РД" />
+                              <TableColumn fx:id="tcPhoneNum" prefWidth="108.0" text="Утасны дугаар" />
+                              <TableColumn fx:id="tcAddress" minWidth="3.0" prefWidth="154.0" text="Оршин суугаа хаяг" />
+                              <TableColumn fx:id="tcProgram" minWidth="3.0" prefWidth="81.0" text="Хөтөлбөр" />
+                              <TableColumn fx:id="tcPass" minWidth="3.0" prefWidth="81.0" text="Нууц Үг" />
+                          </columns>
+                           <columnResizePolicy>
+                              <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                           </columnResizePolicy>
+                        </TableView>
+                     </center>
+                  </BorderPane>
+               </center>
+            </BorderPane>
+            <BorderPane fx:id="teacherForm" layoutX="2.0" prefHeight="665.0" prefWidth="997.0" visible="false">
+               <top>
+                  <HBox alignment="CENTER_LEFT" prefHeight="50.0" prefWidth="250.0" spacing="10.0" BorderPane.alignment="CENTER">
+                     <children>
+                        <Label graphicTextGap="10.0" text="БАГШИЙН ХЭСЭГ">
+                           <font>
+                              <Font name="Arial Mon Bold" size="14.0" />
+                           </font>
+                        </Label>
+                        <Button fx:id="addButton1" alignment="CENTER" graphicTextGap="10.0" mnemonicParsing="false" onAction="#TeacherButtonOnAction" prefHeight="32.0" prefWidth="180.0" styleClass="button2" stylesheets="@../../../css/style.css" text="НЭМЭХ" textFill="#6156e4">
+                           <font>
+                              <Font name="Arial" size="12.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="removeButton1" alignment="CENTER" graphicTextGap="10.0" mnemonicParsing="false" onAction="#removeTeacher" prefHeight="32.0" prefWidth="77.0" styleClass="button2" stylesheets="@../../../css/style.css" text="ХАСАХ" textFill="#ff4747">
+                           <font>
+                              <Font name="Arial Bold" size="12.0" />
+                           </font>
+                        </Button>
+                     </children>
+                     <padding>
+                        <Insets left="25.0" />
+                     </padding>
+                  </HBox>
+               </top>
+               <center>
+                  <BorderPane prefHeight="615.0" prefWidth="914.0" BorderPane.alignment="CENTER">
+                     <center>
+                        <TableView fx:id="tbTeachers" prefHeight="615.0" prefWidth="988.0" stylesheets="@../../../css/style.css" BorderPane.alignment="CENTER">
+                           <columns>
+                              <TableColumn fx:id="tcID1" prefWidth="75.0" text="SISi_ID" />
+                              <TableColumn fx:id="tcProgram1" minWidth="3.0" prefWidth="81.0" text="Хөтөлбөр" />
+                              <TableColumn fx:id="tcDegree1" prefWidth="75.0" text="Зэрэг" />
+                              <TableColumn fx:id="tcFName1" prefWidth="75.0" text="Нэр" />
+                              <TableColumn fx:id="tcLName1" prefWidth="75.0" text="Овог" />
+                              <TableColumn fx:id="tcGender1" prefWidth="75.0" text="Хүйс" />
+                              <TableColumn fx:id="tcRD1" prefWidth="90.0" text="РД" />
+                              <TableColumn fx:id="tcPhoneNum1" prefWidth="108.0" text="Утасны дугаар" />
+                              <TableColumn fx:id="tcAddress1" minWidth="3.0" prefWidth="154.0" text="Оршин суугаа хаяг" />
+                              <TableColumn fx:id="tcPass1" minWidth="3.0" prefWidth="81.0" text="Нууц Үг" />
+                           </columns>
+                           <columnResizePolicy>
+                              <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                           </columnResizePolicy>
+                        </TableView>
+                     </center>
+                  </BorderPane>
+               </center>
+            </BorderPane>
+            <BorderPane fx:id="courseForm" layoutX="2.0" layoutY="3.0" prefHeight="665.0" prefWidth="997.0" visible="false">
+               <top>
+                  <HBox alignment="CENTER_LEFT" prefHeight="50.0" prefWidth="250.0" spacing="10.0" BorderPane.alignment="CENTER">
+                     <children>
+                        <Label graphicTextGap="10.0" text="ХИЧЭЭЛИЙН ХЭСЭГ">
+                           <font>
+                              <Font name="Arial Mon Bold" size="14.0" />
+                           </font>
+                        </Label>
+                        <Button fx:id="addButton3" alignment="CENTER" graphicTextGap="10.0" mnemonicParsing="false" onAction="#CourseButtonOnAction" prefHeight="32.0" prefWidth="180.0" styleClass="button2" stylesheets="@../../../css/style.css" text="НЭМЭХ" textFill="#6156e4">
+                           <font>
+                              <Font name="Arial" size="12.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="removeButton11" alignment="CENTER" graphicTextGap="10.0" mnemonicParsing="false" onAction="#removeCourse" prefHeight="32.0" prefWidth="77.0" styleClass="button2" stylesheets="@../../../css/style.css" text="ХАСАХ" textFill="#ff4747">
+                           <font>
+                              <Font name="Arial Bold" size="12.0" />
+                           </font>
+                        </Button>
+                     </children>
+                     <padding>
+                        <Insets left="25.0" />
+                     </padding>
+                  </HBox>
+               </top>
+               <center>
+                  <BorderPane prefHeight="615.0" prefWidth="914.0" BorderPane.alignment="CENTER">
+                     <center>
+                        <TableView fx:id="tbCourses" prefHeight="615.0" prefWidth="988.0" stylesheets="@../../../css/style.css" BorderPane.alignment="CENTER">
+                           <columns>
+                              <TableColumn fx:id="tcIDX" prefWidth="75.0" text="Index" />
+                              <TableColumn fx:id="tcName" minWidth="3.0" prefWidth="81.0" text="Нэр" />
+                              <TableColumn fx:id="tcDegreeCourse" prefWidth="75.0" text="Түвшин" />
+                              <TableColumn fx:id="tcCredit" prefWidth="75.0" text="Багц цаг" />
+                              <TableColumn fx:id="tcLecture" prefWidth="75.0" text="Цаг(Лекц)" />
+                              <TableColumn fx:id="tcSeminar" prefWidth="75.0" text="Цаг(Семинар)" />
+                              <TableColumn fx:id="tcSeason" prefWidth="90.0" text="Улирал" />
+                              <TableColumn fx:id="tcPurpose" prefWidth="108.0" text="Зорилго" />
+                              <TableColumn fx:id="tcContent" minWidth="3.0" prefWidth="154.0" text="Агуулга" />
+                              <TableColumn fx:id="tcKnowledge" minWidth="3.0" prefWidth="81.0" text="Эзэмших чадвар" />
+                           </columns>
+                           <columnResizePolicy>
+                              <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                           </columnResizePolicy>
+                        </TableView>
+                     </center>
+                  </BorderPane>
+               </center>
+            </BorderPane>
+            <BorderPane fx:id="courseSelectionForm" layoutY="7.0" prefHeight="665.0" prefWidth="997.0" visible="false">
+               <top>
+                  <HBox alignment="CENTER_LEFT" prefHeight="50.0" prefWidth="250.0" spacing="10.0" BorderPane.alignment="CENTER">
+                     <children>
+                        <Label graphicTextGap="10.0" text="ХИЧЭЭЛ СОНГОЛТ">
+                           <font>
+                              <Font name="Arial Mon Bold" size="14.0" />
+                           </font>
+                        </Label>
+                        <Button fx:id="addButton31" alignment="CENTER" graphicTextGap="10.0" mnemonicParsing="false" onAction="#CourseSelectionButtonOnAction" prefHeight="32.0" prefWidth="180.0" styleClass="button2" stylesheets="@../../../css/style.css" text="НЭМЭХ" textFill="#6156e4">
+                           <font>
+                              <Font name="Arial" size="12.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="removeButton111" alignment="CENTER" graphicTextGap="10.0" mnemonicParsing="false" onAction="#removeSelection" prefHeight="32.0" prefWidth="77.0" styleClass="button2" stylesheets="@../../../css/style.css" text="ХАСАХ" textFill="#ff4747">
+                           <font>
+                              <Font name="Arial Bold" size="12.0" />
+                           </font>
+                        </Button>
+                     </children>
+                     <padding>
+                        <Insets left="25.0" />
+                     </padding>
+                  </HBox>
+               </top>
+               <center>
+                  <BorderPane prefHeight="615.0" prefWidth="914.0" BorderPane.alignment="CENTER">
+                     <center>
+                        <TableView fx:id="tbCourseSelection" prefHeight="615.0" prefWidth="988.0" stylesheets="@../../../css/style.css" BorderPane.alignment="CENTER">
+                           <columns>
+                              <TableColumn fx:id="tcLesson" prefWidth="75.0" text="Хичээл" />
+                              <TableColumn fx:id="tcInstructor" minWidth="3.0" prefWidth="81.0" text="Багш" />
+                              <TableColumn fx:id="tcLecDay" prefWidth="75.0" text="Лекцийн өдөр" />
+                              <TableColumn fx:id="tcLecClass" prefWidth="75.0" text="Лекцийн анги" />
+                              <TableColumn fx:id="tcLecTime" prefWidth="75.0" text="Лекцийн цаг" />
+                              <TableColumn fx:id="tcSemDay" prefWidth="75.0" text="Семинарын өдөр" />
+                              <TableColumn fx:id="tcSemclass" prefWidth="90.0" text="Семинарын анги" />
+                              <TableColumn fx:id="tcSemTime" prefWidth="108.0" text="Семинарын цаг" />
+                              <TableColumn fx:id="tcCapacity" minWidth="3.0" prefWidth="154.0" text="Багтаамж" />
+                           </columns>
+                           <columnResizePolicy>
+                              <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                           </columnResizePolicy>
+                        </TableView>
+                     </center>
+                  </BorderPane>
+               </center>
+            </BorderPane>
+         </children>
+      </AnchorPane>
+   </center>
+</BorderPane>

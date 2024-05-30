@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="652.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.StudentController">
+   <children>
+      <AnchorPane prefHeight="80.0" prefWidth="600.0" style="-fx-background-color: #07158f;">
+         <children>
+            <Label layoutX="35.0" layoutY="30.0" text="СУРАГЧИЙН БҮРТГҮҮЛЭХ ХЭСЭГ" textFill="WHITE">
+               <font>
+                  <Font name="Arial Mon Bold" size="18.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <Label contentDisplay="TOP" layoutX="36.0" layoutY="109.0" text="Овог:">
+         <font>
+            <Font name="Arial Mon Bold" size="13.0" />
+         </font>
+      </Label>
+      <TextField fx:id="LastName" layoutX="36.0" layoutY="132.0" prefHeight="30.0" prefWidth="250.0" promptText="Овогоо оруулна уу..." />
+      <Label contentDisplay="TOP" layoutX="312.0" layoutY="109.0" text="Нэр:">
+         <font>
+            <Font name="Arial Mon Bold" size="13.0" />
+         </font>
+      </Label>
+      <TextField fx:id="FirstName" layoutX="312.0" layoutY="132.0" prefHeight="30.0" prefWidth="250.0" promptText="Нэрээ оруулна уу..." />
+      <Label contentDisplay="TOP" layoutX="37.0" layoutY="359.0" text="Гэрийн хаяг:">
+         <font>
+            <Font name="Arial Mon Bold" size="13.0" />
+         </font>
+      </Label>
+      <TextField fx:id="AddressField" layoutX="37.0" layoutY="382.0" prefHeight="30.0" prefWidth="526.0" promptText="Хот, Дүүрэг, Хороо, Хаяг..." />
+      <Label contentDisplay="TOP" layoutX="37.0" layoutY="421.0" text="SISi ID:">
+         <font>
+            <Font name="Arial Mon Bold" size="13.0" />
+         </font>
+      </Label>
+      <TextField fx:id="SISiField" layoutX="37.0" layoutY="444.0" prefHeight="30.0" prefWidth="526.0" promptText="21b1num1632" />
+      <Label contentDisplay="TOP" layoutX="37.0" layoutY="482.0" text="Нууц үг:">
+         <font>
+            <Font name="Arial Mon Bold" size="13.0" />
+         </font>
+      </Label>
+      <Button fx:id="RegButton" layoutX="161.0" layoutY="562.0" mnemonicParsing="false" onAction="#RegistrationButtonOnAction" prefHeight="30.0" prefWidth="285.0" style="-fx-background-color: #07158f;" text="БҮРТГҮҮЛЭХ" textFill="WHITE">
+         <font>
+            <Font name="Arial Mon Bold" size="10.0" />
+         </font>
+      </Button>
+      <Button fx:id="CloseButton" layoutX="161.0" layoutY="598.0" mnemonicParsing="false" onAction="#CloseButtonOnAction" prefHeight="30.0" prefWidth="285.0" style="-fx-background-color: 000000; -fx-border-color: #000000;" text="Хаах...">
+         <font>
+            <Font name="Arial Mon Bold" size="10.0" />
+         </font>
+      </Button>
+      <PasswordField fx:id="passwordData" layoutX="37.0" layoutY="509.0" prefHeight="30.0" prefWidth="526.0" promptText="Нууц үгээ оруулна уу..." />
+      <Label fx:id="registrationMessageLabel" alignment="CENTER" layoutX="155.0" layoutY="545.0" textFill="#745ef2" />
+      <Label contentDisplay="TOP" layoutX="36.0" layoutY="171.0" text="Регистрийн дугаар:">
+         <font>
+            <Font name="Arial Mon Bold" size="13.0" />
+         </font>
+      </Label>
+      <TextField fx:id="regNumber" layoutX="36.0" layoutY="194.0" prefHeight="30.0" prefWidth="250.0" promptText="Регистрийн дугаар" />
+      <Label contentDisplay="TOP" layoutX="312.0" layoutY="171.0" text="Төрсөн он/сар/өдөр:">
+         <font>
+            <Font name="Arial Mon Bold" size="13.0" />
+         </font>
+      </Label>
+      <DatePicker fx:id="date" layoutX="312.0" layoutY="197.0" prefHeight="25.0" prefWidth="250.0" promptText="Төрсөн Он/сар/өдөр" />
+      <Label contentDisplay="TOP" layoutX="38.0" layoutY="239.0" text="Хүйс:">
+         <font>
+            <Font name="Arial Mon Bold" size="13.0" />
+         </font>
+      </Label>
+      <ComboBox fx:id="gender" layoutX="37.0" layoutY="263.0" prefHeight="25.0" prefWidth="250.0" promptText="Хүйсээ оруулна уу..." />
+      <Label contentDisplay="TOP" layoutX="312.0" layoutY="239.0" text="Утасны дугаар:">
+         <font>
+            <Font name="Arial Mon Bold" size="13.0" />
+         </font>
+      </Label>
+      <TextField fx:id="phone" layoutX="312.0" layoutY="261.0" prefHeight="30.0" prefWidth="250.0" promptText="Утасны дугаараа оруулна уу..." />
+      <Label contentDisplay="TOP" layoutX="37.0" layoutY="300.0" text="Сурч буй хөтөлбөр:">
+         <font>
+            <Font name="Arial Mon Bold" size="13.0" />
+         </font>
+      </Label>
+      <TextField fx:id="Program" layoutX="37.0" layoutY="323.0" prefHeight="30.0" prefWidth="526.0" promptText="Хөтөлбөрөө оруулна уу..." />
+   </children>
+</AnchorPane>

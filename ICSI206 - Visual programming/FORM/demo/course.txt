@@ -1,0 +1,11 @@
+ХИЧЭЭЛИЙН ДУГААР: ICSI206
+ХИЧЭЭЛИЙН НЭР: Визуаль програмчлал
+КРЕДИТ: 3 бц
+ЛАБОРТОРИЙН ЦАГ: 3 цаг
+ЛЕКЦИЙН ЦАГ: 2 цаг
+ХӨТӨЛБӨР: Бакалавр
+УЛИРАЛ: Улирал харгалзахгүй
+ТОДОРХОЙЛОЛТ ХИЙГДСЭН ОГНОО: 2023-11-03
+Агуулга: Windows Form-н архитектурийн үндэсийг ойлгох Visual Studio-г ашиглан Windows application хийхWindows Forms-н энгийн control-уудыг ойлгохD ialogs, menus, toolbars ба status bars-г хэрэглэж сурахТree views, splitters, tabbed dialogs-дийг хэрэглэж сурахӨгөгдлийн сантай application хийж сурах
+Мэдээлэл: Windows application ний талаар ойлголттой болж, өөрт хэрэгцээтэй application бичиж сурах,Бичсэн application-даа setup хийх, Crystal report ашиглан тайлан боловсруулах чадвартай болно
+ЗОРИЛГО: Энэ хичээлээр оюутан Visual Studio.Net дээр Visual c# хэлийг ашиглан Desltop application бичиж сурна. .NET 3.5 Framework –н тухай ойлголт,C# хэлний бичиглэл, өгөдлийн төрөл, обьект хандалт, класс, классын дүрэм, Windows Form бүхий Desktop application хийх, Өгөдлийн сантай холбогдох, ADO.Net –г ашиглаж сурах, тайлан гаргах, програсын install хийх
