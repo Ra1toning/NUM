@@ -1,0 +1,66 @@
+<resources>
+    <string name="app_name" translatable="false">30 Days Of Gaming</string>
+    <string name="day1" translatable="false">Day 1</string>
+    <string name="day2" translatable="false">Day 2</string>
+    <string name="day3" translatable="false">Day 3</string>
+    <string name="day4" translatable="false">Day 4</string>
+    <string name="day5" translatable="false">Day 5</string>
+    <string name="day6" translatable="false">Day 6</string>
+    <string name="day7" translatable="false">Day 7</string>
+    <string name="day8" translatable="false">Day 8</string>
+    <string name="day9" translatable="false">Day 9</string>
+    <string name="day10" translatable="false">Day 10</string>
+    <string name="day11" translatable="false">Day 11</string>
+    <string name="day12" translatable="false">Day 12</string>
+    <string name="day13" translatable="false">Day 13</string>
+    <string name="day14" translatable="false">Day 14</string>
+    <string name="day15" translatable="false">Day 15</string>
+    <string name="day16" translatable="false">Day 16</string>
+    <string name="day17" translatable="false">Day 17</string>
+    <string name="day18" translatable="false">Day 18</string>
+    <string name="day19" translatable="false">Day 19</string>
+    <string name="day20" translatable="false">Day 20</string>
+    <string name="day21" translatable="false">Day 21</string>
+    <string name="day22" translatable="false">Day 22</string>
+    <string name="day23" translatable="false">Day 23</string>
+    <string name="day24" translatable="false">Day 24</string>
+    <string name="day25" translatable="false">Day 25</string>
+    <string name="day26" translatable="false">Day 26</string>
+    <string name="day27" translatable="false">Day 27</string>
+    <string name="day28" translatable="false">Day 28</string>
+    <string name="day29" translatable="false">Day 29</string>
+    <string name="day30" translatable="false">Day 30</string>
+
+    <string name="header1" translatable="false">Life is Strange</string>
+    <string name="header2" translatable="false">Little Nightmares</string>
+    <string name="header3" translatable="false">Fallout: 76</string>
+    <string name="header4" translatable="false">METRO: EXODUS</string>
+    <string name="header5" translatable="false">TEKKEN 8</string>
+    <string name="header6" translatable="false">MORTAL KOMBAT: 1</string>
+    <string name="header7" translatable="false">WITCHER: III</string>
+    <string name="header8" translatable="false">DARK SOULS</string>
+    <string name="header9" translatable="false">ELDEN RING</string>
+    <string name="header10" translatable="false">SKYRIM</string>
+    <string name="header11" translatable="false">HADES</string>
+    <string name="header12" translatable="false">TERRARIA</string>
+    <string name="header13" translatable="false">GHOSTRUNNER</string>
+    <string name="header14" translatable="false">GRAND THEFT AUTO V</string>
+    <string name="header15" translatable="false">Red Dead Redemption 2</string>
+    <string name="header16" translatable="false">Subnautica</string>
+    <string name="header17" translatable="false">The Outer Worlds</string>
+    <string name="header18" translatable="false">Sea of Thieves</string>
+    <string name="header19" translatable="false">Forza Horizon 5</string>
+    <string name="header20" translatable="false">Outlast</string>
+    <string name="header21" translatable="false">A WAY OUT</string>
+    <string name="header22" translatable="false">CALL OF DUTY: WWII</string>
+    <string name="header23" translatable="false">THE LAST OF US</string>
+    <string name="header24" translatable="false">SEKIRO</string>
+    <string name="header25" translatable="false">GHOST OF TSUSHIMA</string>
+    <string name="header26" translatable="false">GOD OF WAR</string>
+    <string name="header27" translatable="false">RESIDENT EVIL 2</string>
+    <string name="header28" translatable="false">STAR WARS: FALLEN ORDER</string>
+    <string name="header29" translatable="false">FARCRY6</string>
+    <string name="header30" translatable="false">RUST</string>
+
+    <string name="description" translatable="false"> he Outer Worlds is an award-winning single-player RPG from Obsidian Entertainment and Private Division.</string>
+</resources>
