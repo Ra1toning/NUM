@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "982794985339",
+    "project_id": "myproject-c4acc",
+    "storage_bucket": "myproject-c4acc.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:982794985339:android:5aa274f1785c88ad11a7de",
+        "android_client_info": {
+          "package_name": "com.example.firbase_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCzz3CfDF0TNL_v6zITJV0GlQtlBLJ4svg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
