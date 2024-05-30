@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">ArtSpaceApp</string>
+
+    <string name="title1">BERSERK</string>
+    <string name="artist1">Kentaro Miura</string>
+    <string name="year1">(1998)</string>
+
+    <string name="title2">Vagabond</string>
+    <string name="artist2">Takehiko Inoue</string>
+    <string name="year2">(1999)</string>
+
+    <string name="title3">One Punch Man</string>
+    <string name="artist3">Yusuke Murata</string>
+    <string name="year3">(2012)</string>
+
+    <string name="title4">AKIRA</string>
+    <string name="artist4">Katsuhiro Otomo</string>
+    <string name="year4">(1982)</string>
+</resources>
